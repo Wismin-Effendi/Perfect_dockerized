@@ -1,0 +1,61 @@
+<!-- 1 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TIL</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 2 -->  
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <!-- 3 -->
+  <div class="container">
+    <div class="row">
+      <div class="u-full-width">
+        <h2>TIL: Today I Learned <small>Perfect Web Service</small></h2>
+      </div>
+    </div>
+
+    <!-- 4 - TODO -->
+    <div class="row">
+      <div class="u-full-width">
+        <h4>Add New Acronym</h4>
+      </div>
+    </div>
+
+    <form action="/til" method="post">
+      <div class="row">
+        <div class="three columns">
+          <label>Acronym</label>
+          <input name="short" class="u-full-width" placeholder="short form e.g. FTW" />
+        </div>
+        <div class="nine columns">
+          <label>Long Form</label>
+          <input name="long" class="u-full-width" placeholder="long form e.g. For the Win" />
+          <input class="button-primary" type="submit" value="Save Acronym">
+        </div>
+      </div>
+    </form>
+
+    {{#acronyms}}
+    <div class="row">
+      <div class="three columns">
+        <h5><span>{{short}}</span></h5>
+      </div>
+      <div class="six columns">
+        <p><span>{{long}}</span></p>
+      </div>
+      <div class="three columns">
+        <form action="/til/{{id}}/delete" method="post">
+          <input type="submit" value="Delete"/>
+        </form>
+      </div>
+    </div>
+    {{/acronyms}}
+
+   <!-- 5 -->
+  </div>
+</body>
+</html>
