@@ -1,8 +1,8 @@
 import StORM
-import SQLiteStORM
+import PostgresStORM
 import PerfectLib
 
-class Acronym: SQLiteStORM {
+class Acronym: PostgresStORM {
     
     var id: Int = 0
     var short: String = ""

@@ -2,13 +2,18 @@ import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
 import PerfectMustache
-import SQLiteStORM
+import PostgresStORM
+import Foundation
 
 let server = HTTPServer()
 server.serverPort = 8080
 server.documentRoot = "webroot"
 
-SQLiteConnector.db = "database.db"
+let env = ProcessInfo.processInfo.environment
+PostgresConnector.host      = env["POSTGRES_HOST"] ?? ""
+PostgresConnector.username  = env["POSTGRES_USER"] ?? ""
+PostgresConnector.password  = env["POSTGRES_PASSWORD"] ?? ""
+PostgresConnector.database  = env["POSTGRES_DB"] ?? ""
 
 let setupObj = Acronym()
 try? setupObj.setup()
